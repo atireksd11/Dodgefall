@@ -14,6 +14,8 @@ const player = {
 const keys = {};
 const blocks = [];
 let timeSinceBlock = 0;
+let score = 0;
+let survivalTime = 0;
 let lastTime = null;
 
 
@@ -23,6 +25,17 @@ window.addEventListener("keydown", (event) => {
     if (event.key.startsWith("Arrow")) {
         event.preventDefault();
     }
+    
+    if (event.key.toLowerCase() === "r" && player.gotHit) {
+        player.x = 185;
+        player.y = 520;
+        player.gotHit = false;
+        blocks.length = 0;
+        timeSinceBlock = 0;
+        score = 0;
+        survivalTime = 0;
+        lastTime = null;
+    }
 });
 
 window.addEventListener("keyup", (event) => {
@@ -30,6 +43,9 @@ window.addEventListener("keyup", (event) => {
 });
 
 function update(deltaTime) {
+    if (player.gotHit) {
+        return;
+    }
     const moveAmount = player.speed * deltaTime;
 
     if (keys["arrowleft"] || keys["a"]) {
@@ -48,6 +64,7 @@ function update(deltaTime) {
         player.y += moveAmount;
     }
 
+
     player.x = Math.max(0, Math.min(canvas.width - player.size, player.x));
     player.y = Math.max(0, Math.min(canvas.height - player.size, player.y));
 }
@@ -59,6 +76,7 @@ function draw() {
     context.font = "16px Arial";
     context.textAlign = "center";
     context.fillText("Move with WASD or arrow keys", canvas.width / 2, 30);
+    context.fillText(`Score: ${score}`, canvas.width / 2, 55);
 
     context.fillStyle = player.gotHit ? "#e74c3c" : "yellow";
     context.fillRect(player.x, player.y, player.size, player.size);
@@ -67,11 +85,15 @@ function draw() {
     for (const block of blocks) {
         context.fillRect(block.x, block.y, block.size, block.size);
         }
-    }
+    
     if (player.gotHit) {
             context.fillStyle = "#fff";
-            context.font = "bold 24px Arial";
-            context.fillText("Collision detected!", canvas.width / 2, 80);
+            context.font = "bold 30px Arial";
+            context.fillText("Game Over", canvas.width / 2, 260);
+
+            context.font = "18px Arial";
+            context.fillText("Press R to restart", canvas.width / 2, 295);
+}
 }
 
 function gameLoop(timestamp) {
@@ -85,7 +107,9 @@ function gameLoop(timestamp) {
 
     update(deltaTime);
 
+    if (!player.gotHit) {
     timeSinceBlock += deltaTime;
+    survivalTime += deltaTime;
     if (timeSinceBlock >= 1) {
         const blockSize = 30;
 
@@ -93,14 +117,14 @@ function gameLoop(timestamp) {
             x: Math.random() * (canvas.width - blockSize),
             y: -blockSize,
             size: blockSize,
-            speed: 160
         });
 
         timeSinceBlock = 0;
     }
 
     for (const block of blocks) {
-        block.y += block.speed * deltaTime;
+        const speed = Math.min(160 + survivalTime * 5, 400);
+        block.y += speed * deltaTime;
         if (
             player.x < block.x + block.size && 
             player.x + player.size > block.x &&
@@ -113,9 +137,10 @@ function gameLoop(timestamp) {
 
     for (let i = blocks.length - 1; i >= 0; i--) {
         if (blocks[i].y > canvas.height) {
+            score += 1;
             blocks.splice(i, 1);
         }
-    }
+    }}
     draw();
 
     requestAnimationFrame(gameLoop);
