@@ -8,8 +8,117 @@
   <script src="js/script.js" defer></script>
 </head>
 <body>
-  <main>
-    <canvas id="game" width="400" height="600" aria-label="Dodgefall game canvas"></canvas>
+  <main class="game-shell">
+
+    <section id="menu-screen" class="menu-screen">
+      <header class="page-header">
+        <div class="game-logo">D</div>
+        <div>
+          <p class="eyebrow">ARCADE SURVIVAL</p>
+          <h1>Dodgefall</h1>
+        </div>
+      </header>
+
+      <section class="profile-panel" aria-label="Player profile and stats">
+        <div class="profile-picker">
+          <label for="profile-select">Player profile</label>
+          <select id="profile-select"></select>
+
+          <form id="new-profile-form" class="new-profile-form">
+            <label class="visually-hidden" for="new-profile-name">New profile name</label>
+            <input
+              id="new-profile-name"
+              type="text"
+              maxlength="16"
+              placeholder="New profile name"
+              autocomplete="off"
+              required
+            >
+            <button type="submit" class="small-button">Add profile</button>
+          </form>
+        </div>
+
+        <div class="stats">
+          <div class="stat-card">
+            <span>BEST SCORE</span>
+            <strong id="best-score">0</strong>
+          </div>
+          <div class="stat-card">
+            <span>COINS</span>
+            <strong id="coin-count">0</strong>
+          </div>
+          <div class="stat-card">
+            <span>GAMES PLAYED</span>
+            <strong id="games-played">0</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="menu-card">
+        <p class="eyebrow">READY?</p>
+        <h2>Dodge the blocks. Grab the coins.</h2>
+        <p>Move around the arena and see how long you can last. Blocks get faster the longer you survive.</p>
+        <button id="start-button" class="main-button" type="button">Start game</button>
+      </section>
+
+      <section class="menu-controls">
+        <h2>How to play</h2>
+        <p><kbd>W A S D</kbd> or <kbd>↑ ↓ ← →</kbd> Move</p>
+        <p>Dodge the red blocks. Collect coins for bonus points.</p>
+        <p>Your profiles and progress are saved in this browser.</p>
+      </section>
+    </section>
+
+    <p id="notice" class="notice" role="status" aria-live="polite">
+      Choose a profile, then start a game.
+    </p>
+
+    <section id="play-screen" class="play-screen" hidden>
+      <header class="play-header">
+        <div>
+          <p class="eyebrow">DODGEFALL</p>
+          <h1>Stay alive.</h1>
+        </div>
+        <button id="menu-button" class="second-button" type="button">Back to menu</button>
+      </header>
+
+      <section class="game-layout">
+        <div class="game-card">
+          <div class="game-bar">
+            <span id="game-state-label" class="state-label">PLAYING</span>
+            <span id="current-score">Score: 0</span>
+          </div>
+
+          <canvas
+            id="game"
+            width="400"
+            height="600"
+            aria-label="Dodgefall game. Move with WASD or arrow keys, collect coins, and avoid blocks."
+          ></canvas>
+        </div>
+
+        <aside class="side-panel">
+          <div>
+            <p class="eyebrow">CURRENT PLAYER</p>
+            <h2 id="current-profile-name">Player 1</h2>
+            <p class="description">Coins collected: <strong id="game-coin-count">0</strong></p>
+          </div>
+
+          <div class="button-list">
+            <button id="pause-button" class="main-button" type="button">Pause</button>
+            <button id="restart-button" class="second-button" type="button">Restart run</button>
+          </div>
+
+          <div class="controls">
+            <h3>Controls</h3>
+            <p><kbd>W A S D</kbd> or <kbd>↑ ↓ ← →</kbd> Move</p>
+            <p><kbd>Esc</kbd> Pause or resume</p>
+            <p><kbd>R</kbd> Play again after Game Over</p>
+          </div>
+        </aside>
+      </section>
+    </section>
+
   </main>
 </body>
 </html>

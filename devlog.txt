@@ -16,7 +16,11 @@ README.md
 I worked about 30 min+
 
 
+
+
 ## November 3 (9:51pm):
+
+
 
 I addded falling blocks that spawn at random positions from top, going downwards, and disappearing after passing the bottom. I learned how to track key presses and update object positions in the game's loop.
 
@@ -24,6 +28,24 @@ I also made the user's block to turn red and stop, when it touches any of the ra
 
 ## November 3 (10:20pm):
 
-I completed the v1 by adding score, which increases every time I dodge a block and it adds score to 1. I also added a Game Over screen and made it so pressing r restarts the game and the score resets. Blocks get faster the longer i survive, making it more challenging. I learned how to track score, detect collisions and reset the game state using controls.
+I completed the v1 by adding score, which increases every time I dodge a block and it adds score by 1. I also added a Game Over screen and made it so pressing r restarts the game and the score resets. Blocks get faster the longer i survive, making it more challenging. I learned how to track score, detect collisions and reset the game state using controls.
 
-For my v2, my plan is to make the design better, add more features, like profile, highest score, fun additional stuff like coins which can be collected, better designed blocks, and overall a much better game.
+For my v2, my plan is to make the design better, add more features, like profile, ighest score, fun additional stuff like coins which can be collected, better designed blocks, and overall a much better game. 
+
+
+
+
+## November 4 - lost the time :(
+
+I basically started to improve the game, beyond its original prototype. I added player profiles with best score, coins collected, and games played, total, which is saved in the browser. I added collectable coins that give bonus points, plus controls to pause, restart, and return to menu.
+
+I also redesigned the page, and separated the menu from the game itself. The game screenshows the canvas alongside the controls and current player who is playing. Also made the canvas bigger, and the blocks' design better.
+
+This version helped me practice saving and loading browser data, connecting the interface buttons to game state, and organizing the game into a menu and gameplay screen.
+
+I am doing better than my last project I built on crescent for last week, and learning a lot faster in terms of game development through js very quickly.
+
+This was done today, some work in morning, some in afternoon, and rest UI/UX completed just now, at about 6:35pm.
+
+
+Next I would probably keep improving the visuals and the gameplay, and later maybe, add more games.
