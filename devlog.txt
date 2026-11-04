@@ -1,0 +1,23 @@
+## November 3 (9:30pm):
+
+I built the index.html, style.css, and script.js files, where index.html creates the canvas and loads other files, style.css centers and styles the canvas, and script.js runs the update and draw cycle, using requestanimationframe, which is the timer on the canvas which lets you to see the loop running.
+
+I completed the WASD and arrow key controls, so the player can move around the canvas.
+
+I also built the folder structure:
+> css
+    style.css
+> js
+    script.js
+devlog.txt
+index.html
+README.md
+
+I worked about 30 min+
+
+
+## November 3 (9:51pm):
+
+I addded falling blocks that spawn at random positions from top, going downwards, and disappearing after passing the bottom. I learned how to track key presses and update object positions in the game's loop.
+
+I also made the user's block to turn red and stop, when it touches any of the random blocks, meaning the game stops.
