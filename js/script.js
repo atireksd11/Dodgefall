@@ -244,7 +244,6 @@ function endGame() {
 
 function addProfile(event) {
     event.preventDefault();
-
     const name = newProfileName.value.trim();
 
     if (!name) {

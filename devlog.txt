@@ -49,3 +49,13 @@ This was done today, some work in morning, some in afternoon, and rest UI/UX com
 
 
 Next I would probably keep improving the visuals and the gameplay, and later maybe, add more games.
+
+
+
+## November 5-9 — Starting V3
+
+I started turning Dodgefall into a small arcade hub instead of a single game. I made a game selection screen and began splitting the project into separate JavaScript files for the menu, saved profile data, and each game.
+
+I also started building a second game called Lane Rush, where the player switches between lanes to dodge obstacles and collect coins. V3 is still in progress: I found some bugs in Lane Rush and profile handling that I need to fix before I can say both games are working.
+
+Next, I want to fix those bugs and test both games, profile saving, and the menu and just overall working to make it better.

@@ -56,3 +56,7 @@ This is the Game's screenshot online - ![SECOND MAIN IMAGE](image-1.png)
 ## Repository
 
 [View the project on GitHub](https://github.com/atireksd11/Dodgefall)
+
+## Credits 
+
+Help used: Copilot helped in fixing errors, troubleshooting, and helping me commit to github when it was stuck - ![alt text](image-2.png)

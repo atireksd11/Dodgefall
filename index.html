@@ -3,122 +3,183 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dodgefall</title>
+  <meta name="theme-color" content="#191a17">
+  <title>Small Arcade</title>
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/script.js" defer></script>
+  <script type="module" src="js/main.js"></script>
 </head>
 <body>
-  <main class="game-shell">
+  <main class="app">
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="Small Arcade home">
+        <span class="brand-mark">SA</span>
+        <span>SMALL ARCADE</span>
+      </a>
+      <span class="header-note">A couple of games, made by me.</span>
+    </header>
 
-    <section id="menu-screen" class="menu-screen">
-      <header class="page-header">
-        <div class="game-logo">D</div>
-        <div>
-          <p class="eyebrow">ARCADE SURVIVAL</p>
-          <h1>Dodgefall</h1>
-        </div>
-      </header>
+    <p id="notice" class="notice" role="status" aria-live="polite">
+      Choose a player and a game to get started.
+    </p>
 
-      <section class="profile-panel" aria-label="Player profile and stats">
+    <section id="menu-screen">
+      <section class="welcome">
+        <p class="eyebrow">WELCOME IN</p>
+        <h1>Pick a game.<br>See how you do.</h1>
+        <p class="welcome-copy">
+          Two quick arcade games. No downloads, no accounts, just press play.
+        </p>
+      </section>
+
+      <section class="profile-section" aria-label="Player profile">
         <div class="profile-picker">
-          <label for="profile-select">Player profile</label>
+          <label for="profile-select">Playing as</label>
           <select id="profile-select"></select>
-
-          <form id="new-profile-form" class="new-profile-form">
-            <label class="visually-hidden" for="new-profile-name">New profile name</label>
-            <input
-              id="new-profile-name"
-              type="text"
-              maxlength="16"
-              placeholder="New profile name"
-              autocomplete="off"
-              required
-            >
-            <button type="submit" class="small-button">Add profile</button>
-          </form>
         </div>
 
-        <div class="stats">
-          <div class="stat-card">
-            <span>BEST SCORE</span>
-            <strong id="best-score">0</strong>
+        <form id="new-profile-form" class="new-profile-form">
+          <label class="visually-hidden" for="new-profile-name">New profile name</label>
+          <input
+            id="new-profile-name"
+            type="text"
+            maxlength="16"
+            placeholder="Add a player"
+            autocomplete="off"
+            required
+          >
+          <button class="button button-small" type="submit">Add</button>
+        </form>
+
+        <div class="profile-stats">
+          <div>
+            <span>BEST DODGEFALL</span>
+            <strong id="best-dodgefall">0</strong>
           </div>
-          <div class="stat-card">
+          <div>
+            <span>BEST LANE RUSH</span>
+            <strong id="best-lanes">0</strong>
+          </div>
+          <div>
             <span>COINS</span>
             <strong id="coin-count">0</strong>
           </div>
-          <div class="stat-card">
-            <span>GAMES PLAYED</span>
+          <div>
+            <span>RUNS</span>
             <strong id="games-played">0</strong>
           </div>
         </div>
       </section>
 
-      <section class="menu-card">
-        <p class="eyebrow">READY?</p>
-        <h2>Dodge the blocks. Grab the coins.</h2>
-        <p>Move around the arena and see how long you can last. Blocks get faster the longer you survive.</p>
-        <button id="start-button" class="main-button" type="button">Start game</button>
+      <section class="game-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">THE GAME SHELF</p>
+            <h2>Choose what to play</h2>
+          </div>
+        </div>
+
+        <div class="game-list">
+          <article class="game-tile">
+            <div class="tile-topline">
+              <span class="game-number">01</span>
+              <span class="game-type">DODGE & COLLECT</span>
+            </div>
+            <h3>Dodgefall</h3>
+            <p>Move freely, avoid falling blocks, and grab coins while you can.</p>
+            <p class="tile-controls">WASD / arrow keys</p>
+            <button class="button game-choice" type="button" data-game="dodgefall">
+              Choose Dodgefall
+            </button>
+          </article>
+
+          <article class="game-tile">
+            <div class="tile-topline">
+              <span class="game-number">02</span>
+              <span class="game-type">THREE-LANE SURVIVAL</span>
+            </div>
+            <h3>Lane Rush</h3>
+            <p>Switch lanes to dodge traffic. Pick up coins when there’s an opening.</p>
+            <p class="tile-controls">A / D or ← / →</p>
+            <button class="button game-choice" type="button" data-game="lane-rush">
+              Choose Lane Rush
+            </button>
+          </article>
+        </div>
       </section>
 
-      <section class="menu-controls">
-        <h2>How to play</h2>
-        <p><kbd>W A S D</kbd> or <kbd>↑ ↓ ← →</kbd> Move</p>
-        <p>Dodge the red blocks. Collect coins for bonus points.</p>
-        <p>Your profiles and progress are saved in this browser.</p>
-      </section>
+      <footer class="page-footer">
+        <span>Profiles are saved in this browser.</span>
+        <span>Made with HTML, CSS, and JavaScript.</span>
+      </footer>
     </section>
-
-    <p id="notice" class="notice" role="status" aria-live="polite">
-      Choose a profile, then start a game.
-    </p>
 
     <section id="play-screen" class="play-screen" hidden>
       <header class="play-header">
         <div>
-          <p class="eyebrow">DODGEFALL</p>
-          <h1>Stay alive.</h1>
+          <button id="back-button" class="text-button" type="button">← Game shelf</button>
+          <p id="game-kicker" class="eyebrow">ARCADE GAME</p>
+          <h1 id="game-title">Dodgefall</h1>
         </div>
-        <button id="menu-button" class="second-button" type="button">Back to menu</button>
+        <div class="run-score">
+          <span>YOUR SCORE</span>
+          <strong id="current-score">0</strong>
+        </div>
       </header>
 
-      <section class="game-layout">
-        <div class="game-card">
-          <div class="game-bar">
-            <span id="game-state-label" class="state-label">PLAYING</span>
-            <span id="current-score">Score: 0</span>
+      <div class="play-layout">
+        <section class="canvas-card">
+          <div class="canvas-heading">
+            <span id="game-state-label">READY</span>
+            <span id="current-player-label">Player 1</span>
           </div>
-
           <canvas
             id="game"
             width="400"
             height="600"
-            aria-label="Dodgefall game. Move with WASD or arrow keys, collect coins, and avoid blocks."
+            aria-label="Arcade game canvas"
           ></canvas>
-        </div>
+        </section>
 
-        <aside class="side-panel">
+        <aside class="run-panel">
           <div>
-            <p class="eyebrow">CURRENT PLAYER</p>
-            <h2 id="current-profile-name">Player 1</h2>
-            <p class="description">Coins collected: <strong id="game-coin-count">0</strong></p>
+            <p class="eyebrow">HOW TO PLAY</p>
+            <h2 id="game-instructions-title">Dodge the blocks.</h2>
+            <p id="game-description" class="game-description"></p>
           </div>
 
-          <div class="button-list">
-            <button id="pause-button" class="main-button" type="button">Pause</button>
-            <button id="restart-button" class="second-button" type="button">Restart run</button>
+          <div class="run-buttons">
+            <button id="start-button" class="button button-primary" type="button">
+              Start run
+            </button>
+            <button id="pause-button" class="button" type="button" disabled>
+              Pause
+            </button>
+            <button id="restart-button" class="button" type="button" disabled>
+              Restart
+            </button>
+            <button id="back-run-button" class="text-button" type="button">
+              Back to game shelf
+            </button>
           </div>
 
-          <div class="controls">
+          <div class="best-score">
+            <span>PERSONAL BEST</span>
+            <strong id="game-best">0</strong>
+          </div>
+
+          <div class="key-guide">
             <h3>Controls</h3>
-            <p><kbd>W A S D</kbd> or <kbd>↑ ↓ ← →</kbd> Move</p>
-            <p><kbd>Esc</kbd> Pause or resume</p>
-            <p><kbd>R</kbd> Play again after Game Over</p>
+            <p id="game-controls"></p>
+            <p><kbd>Esc</kbd> Pause / resume</p>
+            <p><kbd>R</kbd> Restart after a run ends</p>
           </div>
-        </aside>
-      </section>
-    </section>
 
+          <p class="local-save-note">
+            Progress is stored locally in this browser, not in an online account.
+          </p>
+        </aside>
+      </div>
+    </section>
   </main>
 </body>
 </html>
